@@ -5,12 +5,16 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import se331.lab.rest.entity.Event;
+import se331.lab.rest.entity.Organizer;
 import se331.lab.rest.repository.EventRepository;
+import se331.lab.rest.repository.OrganizerRepository;
 
 @Component
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Autowired
     EventRepository eventRepository;
+    @Autowired
+    OrganizerRepository organizerRepository;
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
@@ -53,6 +57,37 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .time("10.00am-6.00 pm.")
                 .petAllowed(true)
                 .organizer("Chiang Mai Municipality").build()
+        );
+
+        organizerRepository.save(Organizer.builder()
+                .address("Meow Town")
+                .orgName("Kat Laydee")
+                .build()
+        );
+        organizerRepository.save(Organizer.builder()
+                .address("Flora City")
+                .orgName("Fern Pollin")
+                .build()
+        );
+        organizerRepository.save(Organizer.builder()
+                .address("Playa Del Carmen")
+                .orgName("Carey Wales")
+                .build()
+        );
+        organizerRepository.save(Organizer.builder()
+                .address("Woof Town")
+                .orgName("Dawg Dahd")
+                .build()
+        );
+        organizerRepository.save(Organizer.builder()
+                .address("Tin City")
+                .orgName("Kahn Opiner")
+                .build()
+        );
+        organizerRepository.save(Organizer.builder()
+                .address("Highway 50")
+                .orgName("Brody Kill")
+                .build()
         );
     }
 }
